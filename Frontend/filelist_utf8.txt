@@ -1,0 +1,9 @@
+﻿D:\visiontrek a1\LudoWorking\frontend\src\Sounds\button_click.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\enter_triangle.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\jump.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\kill.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\move.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\move_old.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\roll.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\timer.mp3
+D:\visiontrek a1\LudoWorking\frontend\src\Sounds\winner.mp3

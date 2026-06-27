@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;600;800&display=swap');
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Outfit', sans-serif;
+    background: #060818;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+/* ðŸŽï¸ TECH BACKGROUND */
+.techBackground {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(88, 28, 135, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 10% 10%, rgba(30, 64, 175, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(139, 92, 246, 0.3) 0%, transparent 40%);
+    z-index: 1;
+}
+
+.techBackground::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.circleGlow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* ðŸ† MAIN TITLES */
+.resultHeader {
+    text-align: center;
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.youWon {
+    font-size: min(15vw, 4.5rem);
+    font-weight: 950;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 5px 0 #b45309;
+    animation: titlePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.youLost {
+    font-size: min(15vw, 4rem);
+    font-weight: 950;
+    color: #ef4444;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 5px 0 #7f1d1d;
+}
+
+.superstarTag {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-top: 10px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+@keyframes titlePop {
+    0% { transform: scale(0) rotate(-5deg); filter: blur(10px); }
+    70% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0); filter: blur(0); }
+}
+
+.emojiContainer {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.resultEmoji {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+    animation: emojiFloat 3s infinite ease-in-out;
+}
+
+@keyframes emojiFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.05); }
+}
+
+/* ðŸŽ–ï¸ WINNER BADGE */
+.winnerBadgeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.winnerBox {
+    background: linear-gradient(135deg, #1e40af, #1e3a8a);
+    padding: 10px 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(30, 64, 175, 0.5);
+    border: 2px solid #fbbf24;
+}
+
+.winnerBox::before, .winnerBox::after {
+    content: '🌿';
+    font-size: 2.5rem;
+    position: absolute;
+    filter: sepia(100%) saturate(300%) brightness(120%) hue-rotate(10deg);
+}
+
+.winnerBox::before { left: -50px; transform: scaleX(-1) rotate(15deg); }
+.winnerBox::after { right: -50px; rotate: 15deg; }
+
+.winnerLabel {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 950;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* 📜 RANKINGS LIST */
+.rankingsList {
+    width: min(95vw, 440px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 2;
+}
+
+.rankCard {
+    height: 95px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s;
+    overflow: visible; /* To allow trophies to pop out */
+}
+
+.rankCard:hover {
+    transform: scale(1.03);
+}
+
+.rank1 {
+    background: linear-gradient(90deg, #fbbf24 0%, #d97706 100%);
+    box-shadow: 0 10px 40px rgba(251, 191, 36, 0.4);
+}
+
+.rank2 {
+    background: linear-gradient(90deg, #93c5fd 0%, #3b82f6 100%);
+}
+
+.rank3 {
+    background: linear-gradient(90deg, #86efac 0%, #16a34a 100%);
+}
+
+.rankOther {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(15px);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.trophyContainer {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: -10px;
+}
+
+.trophyEmoji { 
+    font-size: 3.5rem; 
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    animation: trophyFloat 3s infinite ease-in-out;
+}
+
+@keyframes trophyFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.trophyRank {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    font-size: 1.2rem;
+    font-weight: 1000;
+    color: #000;
+}
+
+.rankOther .trophyRank { display: none; }
+.rankOther .trophyEmoji { font-size: 1.5rem; }
+
+.avatarWrapper {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    overflow: hidden;
+    margin: 0 15px;
+    background: #060818;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playerDetails {
+    flex: 1;
+}
+
+.playerName {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.rankOther .playerName { color: #fff; }
+
+.playerScore {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #451a03;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.scoreCoinIcon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 211, 42, 0.4));
+}
+
+.rank2 .playerScore { color: #1e3a8a; }
+.rank3 .playerScore { color: #064e3b; }
+.rankOther .playerScore { color: #fbbf24; }
+
+/* 🎮 ACTIONS */
+.actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+.actionBtn {
+    padding: 16px 40px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.4);
+}
+
+.primaryBtn {
+    background: linear-gradient(to bottom, #f59e0b, #d97706);
+    color: #000;
+}
+
+.secondaryBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.actionBtn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.actionBtn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+
+@media (max-width: 480px) {
+    .rankCard { height: 80px; }
+    .avatarWrapper { width: 50px; height: 50px; }
+    .winnerBox { padding: 8px 25px; }
+    .winnerBox::before, .winnerBox::after { font-size: 1.5rem; }
+}

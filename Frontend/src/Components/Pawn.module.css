@@ -1,0 +1,58 @@
+@keyframes pulse {
+  0% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 1px rgba(255,255,255,0.2)); }
+  50% { transform: scale(1.08); filter: brightness(1.15) drop-shadow(0 0 4px currentColor); }
+  100% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 1px rgba(255,255,255,0.2)); }
+}
+
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.activePawn {
+  animation: pulse 1.2s infinite ease-in-out;
+  transform-origin: center;
+  transform-box: fill-box;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.activePawn:hover {
+  transform: scale(1.15);
+  filter: brightness(1.25) drop-shadow(0 0 8px currentColor) !important;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.finishedPawn {
+  pointer-events: none;
+  opacity: 0.9;
+  filter: grayscale(0.2) brightness(0.9);
+}
+
+.pawnBase {
+  transition: all 0.3s ease;
+}
+
+.activePawn .pawnBase {
+  filter: drop-shadow(0 0 5px currentColor);
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.pawnGlow {
+  animation: shimmer 2s infinite ease-in-out;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.starIcon {
+  animation: slowRotate 8s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}

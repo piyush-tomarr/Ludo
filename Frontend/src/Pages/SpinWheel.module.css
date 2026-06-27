@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+.spinWheelContainer {
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1e1e3f 0%, #0a0a1a 100%);
+    background-image: 
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%),
+        repeating-conic-gradient(from 0deg, #1e1e3f 0deg 22.5deg, #16162d 22.5deg 45deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+}
+
+.backButton {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.backButton:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #f1c40f;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 2rem;
+    text-align: center;
+    z-index: 10;
+    -webkit-text-stroke: 2px #c0392b;
+    filter: drop-shadow(0 8px 0 #c0392b) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6));
+}
+
+.wheelWrapper {
+    position: relative;
+    width: min(280px, 60vw);
+    height: min(280px, 60vw);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.wheelOuter {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 12px solid #f1c40f;
+    box-shadow: 
+        0 0 0 10px #c0392b,
+        0 20px 50px rgba(0, 0, 0, 0.7);
+    background: #2c3e50;
+    overflow: hidden;
+    transition: transform 6s cubic-bezier(0.1, 0, 0.1, 1);
+    z-index: 2;
+}
+
+.lightsRing {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 8px dotted #fff;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 0 5px #fff);
+    animation: rotateLights 30s linear infinite;
+}
+
+@keyframes rotateLights {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.wheelSegments {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    background: #c0392b; 
+}
+
+.segment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    clip-path: polygon(50% 50%, 35% 0, 65% 0);
+}
+
+.segmentContent {
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%) rotate(90deg);
+    font-weight: 700;
+    font-size: 1.28rem;
+    color: #fff;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.pointer {
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 85px;
+    height: 70px;
+    background: linear-gradient(90deg, #e67e22 0%, #d35400 100%);
+    clip-path: polygon(0% 30%, 70% 30%, 70% 0%, 100% 50%, 70% 100%, 70% 70%, 0% 70%);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    border: 3px solid #fff;
+    filter: drop-shadow(5px 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.spinButton {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 30% 30%, #f1c40f 0%, #e67e22 100%);
+    border-radius: 50%;
+    border: 8px solid #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 40;
+    transition: transform 0.2s;
+}
+
+.spinButtonText {
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+
+.premiumSpinBtn {
+    margin-top: 4rem;
+    background: linear-gradient(to bottom, #f1c40f 0%, #e67e22 100%);
+    padding: 1.2rem 4.5rem;
+    border-radius: 100px;
+    border: 5px solid #fff;
+    color: #4a235a;
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    box-shadow: 
+        0 8px 0 #a04000,
+        0 15px 30px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.premiumSpinBtn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.premiumSpinBtn:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #a04000, 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* New Arcade Style Modal */
+.rewardModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.modalContent {
+    position: relative;
+    background: linear-gradient(135deg, #6c3483 0%, #4a235a 100%);
+    width: 420px;
+    max-width: 90%;
+    padding: 3rem 1.5rem 2rem;
+    border-radius: 30px;
+    border: 4px solid #f1c40f;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.5);
+    text-align: center;
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Close Button */
+.closeButton {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 45px;
+    height: 45px;
+    background: #e74c3c;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.closeButton:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* Crown and Ribbon */
+.modalHeader {
+    position: absolute;
+    top: -65px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.crown {
+    font-size: 4rem;
+    filter: drop-shadow(0 0 10px #f1c40f);
+    margin-bottom: -15px;
+    z-index: 2;
+}
+
+.ribbon {
+    position: relative;
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+    color: #fff;
+    padding: 0.8rem 3rem;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    z-index: 1;
+    -webkit-text-stroke: 1px #800000;
+}
+
+.ribbon::before, .ribbon::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 40px;
+    height: 45px;
+    background: #922b21;
+    z-index: -1;
+}
+
+.ribbon::before { left: -20px; transform: skewY(15deg); }
+.ribbon::after { right: -20px; transform: skewY(-15deg); }
+
+/* Content Section */
+.rewardBody {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.coinsStack {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px rgba(241, 196, 15, 0.5));
+    animation: float 2s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+.sparkle {
+    position: absolute;
+    color: #fff;
+    font-size: 1.5rem;
+    animation: flicker 1s infinite alternate;
+}
+
+@keyframes flicker {
+    from { opacity: 0.3; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+.rewardText {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #f1c40f;
+    margin-bottom: 2rem;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rewardText span {
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+/* Footer Buttons */
+.modalFooter {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.modalBtn {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    border: 5px solid #fff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.modalBtn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.modalBtn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3), 0 5px 10px rgba(0,0,0,0.4);
+}
+
+.btnCollect { background: linear-gradient(to bottom, #f1c40f, #e67e22); color: #4a235a; }
+.btnAgain { background: linear-gradient(to bottom, #2ecc71, #27ae60); color: #fff; }
+
+/* Not Won Variant */
+.modalNotWon { background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%); border-color: #3498db; }
+.modalNotWon .ribbon { background: linear-gradient(to bottom, #3498db, #2980b9); }
+.modalNotWon .ribbon::before, .modalNotWon .ribbon::after { background: #1a5276; }
+.modalNotWon .rewardText { color: #3498db; }
+
+@media (max-width: 600px) {
+    .modalContent { width: 320px; padding-top: 2.5rem; }
+    .ribbon { font-size: 1.6rem; padding: 0.6rem 2rem; }
+    .rewardText { font-size: 2.5rem; }
+    .modalBtn { font-size: 0.9rem; }
+}
+
+.disabledSpin {
+    filter: grayscale(1) opacity(0.7);
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.spinLimitMsg {
+    margin-top: 2rem;
+    background: rgba(231, 76, 60, 0.2);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid #e74c3c;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

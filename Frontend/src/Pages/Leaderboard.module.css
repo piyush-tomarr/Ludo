@@ -1,0 +1,261 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+.container {
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 50%, #2b0b4a 0%, #1a062d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 40px;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* Background effects */
+.container::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(255, 255, 255, 0.02) 100px, rgba(255, 255, 255, 0.02) 101px);
+    z-index: 0;
+}
+
+.backButton {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: rgba(255, 215, 0, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.backButton:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.backButton svg {
+    transition: transform 0.3s ease;
+}
+
+.backButton:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 600px) {
+    .backButton {
+        top: max(15px, env(safe-area-inset-top));
+        left: max(15px, env(safe-area-inset-left));
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.4);
+    }
+}
+
+.titleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    z-index: 1;
+}
+
+.titleBadge {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.mainTitle {
+    font-size: 2.8rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    background: linear-gradient(to bottom, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.leaderboardFrame {
+    width: min(95vw, 1000px);
+    background: rgba(43, 11, 74, 0.8);
+    backdrop-filter: blur(20px);
+    border: 3px solid #ffd700;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 80px 220px 100px 100px 120px 100px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px 12px 0 0;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.listArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    scrollbar-width: none;
+}
+
+.listArea::-webkit-scrollbar { display: none; }
+
+.playerRow {
+    display: grid;
+    grid-template-columns: 80px 220px 100px 100px 120px 100px;
+    align-items: center;
+    background: linear-gradient(90deg, #420f7a, #5a15a8);
+    margin-bottom: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: rowAppear 0.5s ease backwards;
+}
+
+.playerRow:hover {
+    transform: scale(1.01);
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.rankCol {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #ffd700;
+}
+
+.nameCol {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.diamondAvatar {
+    width: 48px;
+    height: 48px;
+    background: #420f7a; /* Darker base for diamond */
+    transform: rotate(45deg);
+    border: 2px solid #ffd700;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Selector for the react-avatar outer div */
+.diamondAvatar > div:first-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 135% !important;
+    height: 135% !important;
+    transform: rotate(-45deg) !important;
+    flex-shrink: 0 !important;
+}
+
+/* Specifically target the internal span or div if it's initials */
+.diamondAvatar :global(.sb-avatar__text),
+.diamondAvatar :global(.sb-avatar__img) {
+    transform: none !important; /* Reset nested rotations */
+}
+
+.diamondAvatar img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.playerName {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.idCol {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+.scoreCol {
+    font-weight: 800;
+    color: #4CAF50;
+    font-size: 1.1rem;
+}
+
+.matchesCol {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.rateCol {
+    font-weight: 900;
+    color: white;
+    font-size: 1rem;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px gold); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 20px orange); }
+}
+
+@keyframes rowAppear {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 800px) {
+    .hideOnMobile { display: none; }
+    .tableHeader, .playerRow {
+        grid-template-columns: 50px 1fr 60px 70px;
+        padding: 10px;
+        font-size: 0.75rem;
+    }
+    .diamondAvatar { width: 36px; height: 36px; }
+    .mainTitle { font-size: 1.8rem; }
+    .idCol { display: none; }
+}

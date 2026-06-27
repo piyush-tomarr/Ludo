@@ -1,0 +1,13 @@
+.container {
+  /* height: 100vh; */
+  /* height: 100dvh; */
+  width: 100vw;
+  background: radial-gradient(circle at center, #2d0a5e 0%, #0d0129 100%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}

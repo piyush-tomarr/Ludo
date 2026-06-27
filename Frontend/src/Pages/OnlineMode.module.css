@@ -1,0 +1,261 @@
+﻿.container {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    background: linear-gradient(135deg, #1A2980 0%, #26D0CE 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+    overflow-x: hidden;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 15s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -150px;
+}
+
+.circle:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.backButton {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.backButton svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.backButton:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 600px) {
+    .backButton {
+        top: max(15px, env(safe-area-inset-top));
+        left: max(15px, env(safe-area-inset-left));
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .backButton span {
+        display: none;
+    }
+
+    .backButton svg {
+        width: 22px;
+        height: 22px;
+        margin: 0;
+    }
+}
+
+.walletBadge {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 30px;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.walletText { font-size: 1.1rem; font-weight: 800; color: #ffd700; }
+.walletIcon { font-size: 1.2rem; }
+.walletValue { font-size: 1.1rem; font-weight: 800; color: #ffd700; }
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 900;
+    color: white;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+    .optionsContainer {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto 40px;
+    }
+}
+
+.optionCard {
+    background: rgba(255, 255, 255, 1);
+    border: 4px solid transparent;
+    border-radius: 25px;
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.optionCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+    border-color: var(--card-color);
+}
+
+.iconContainer {
+    width: 90px;
+    height: 90px;
+    background: #f5f7fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 44px;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.optionCard:hover .iconContainer {
+    background: var(--card-color);
+    transform: scale(1.1);
+}
+
+.emoji {
+    filter: grayscale(0.2);
+}
+
+.optionCard:hover .emoji {
+    filter: grayscale(0) brightness(1.2);
+}
+
+.optTitle {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.optDesc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.infoBox {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.infoBox svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
+.infoBox p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.95;
+}

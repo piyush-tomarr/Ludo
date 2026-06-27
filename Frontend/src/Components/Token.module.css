@@ -1,0 +1,24 @@
+﻿.token {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 5;
+  border: 2px solid #fff;
+}
+
+.red {
+  background: #e53935;
+}
+
+.blue {
+  background: #1e88e5;
+}
+
+.green {
+  background: #43a047;
+}
+
+.yellow {
+  background: #fad416;
+}

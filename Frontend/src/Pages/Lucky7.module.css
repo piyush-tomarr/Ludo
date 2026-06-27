@@ -1,0 +1,589 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+.lucky7Container {
+    width: 100%;
+    min-height: 100vh;
+    background: #4a0404;
+    background-image:
+        url("https://www.transparenttextures.com/patterns/damask.png"),
+        radial-gradient(circle at center, #6d0a0a 0%, #2b0202 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    font-family: 'Outfit', sans-serif;
+    color: #fff;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+}
+
+/* Marquee Header */
+.marqueeHeader {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.mainLogoImg {
+    width: 380px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(241, 196, 15, 0.4));
+    z-index: 10;
+}
+
+.decorDice {
+    font-size: 3rem;
+    color: #fff;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
+    margin-bottom: -10px;
+}
+
+.coinStacks {
+    font-size: 2.5rem;
+    margin-bottom: -10px;
+}
+
+/* Stats Area */
+.topBar {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.statPill {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 1.5rem;
+    border-radius: 50px;
+    border: 2px solid #d4ac0d;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.infoBtn {
+    width: 45px;
+    height: 45px;
+    background: #d4ac0d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #fff;
+    color: #2b0202;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.infoBtn:hover {
+    transform: scale(1.1);
+    background: #f1c40f;
+}
+
+.infoBtn:active {
+    transform: scale(0.9);
+}
+
+/* Betting Options */
+.selectOptionTitle {
+    font-size: 1.8rem;
+    font-weight: 900;
+    /* margin-top: 2rem; */
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.selectOptionTitle::before,
+.selectOptionTitle::after {
+    content: '◈';
+    color: #d4ac0d;
+    font-size: 1.2rem;
+}
+
+.bettingOptions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 95%;
+    max-width: 1000px;
+}
+
+.optionCard {
+    flex: 1;
+    background: linear-gradient(to bottom, #f1c40f, #f39c12);
+    border-radius: 15px;
+    border: 4px solid #7b241c;
+    position: relative;
+    padding: 2rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.optionCard.selected {
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 0 30px #f1c40f, 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.multiplierTag {
+    position: absolute;
+    top: -12px;
+    background: #7b241c;
+    color: #fff;
+    padding: 0.2rem 1.2rem;
+    border-radius: 10px;
+    border: 2px solid #f1c40f;
+    font-weight: 900;
+    font-size: 1.2rem;
+    z-index: 5;
+}
+
+.rangeText {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #4a0404;
+    margin-bottom: 1rem;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.indicator {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #4a0404;
+    border: 3px solid #7b241c;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.optionCard.selected .indicator {
+    background: #2ecc71;
+    border-color: #fff;
+}
+
+.innerDot {
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.winLabel {
+    font-weight: 900;
+    color: #4a0404;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.amountBox {
+    background: #2b0202;
+    padding: 0.3rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 900;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Bet Selector Area */
+.betControl {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controlLabel {
+    color: #f1c40f;
+    font-weight: 900;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.controlRow {
+    background: #2b0202;
+    border: 3px solid #7b241c;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btnRound {
+    width: 40px;
+    height: 40px;
+    background: #e74c3c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #922b21;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+.btnRound:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.betVal {
+    font-size: 1.8rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Roll Dice Button */
+.rollBtnWrapper {
+    margin-top: 3rem;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.rollBtnWrapper:active {
+    transform: scale(0.95);
+}
+
+.rollBtnImage {
+    width: 280px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(231, 76, 60, 0.4));
+}
+
+.limitBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* History Grid */
+.historyGrid {
+    margin-top: 2rem;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.slot {
+    width: 48px;
+    height: 48px;
+    background: #2b0202;
+    border: 3px solid #7b241c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #fff;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+}
+
+.winSlot {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: #2ecc71;
+    color: #2ecc71;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.lossSlot {
+    background: rgba(231, 76, 60, 0.2);
+    border-color: #e74c3c;
+    color: #e74c3c;
+    text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+
+@media (max-width: 600px) {
+    .historyGrid {
+        gap: 0.4rem;
+    }
+    .slot {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Footer Actions */
+.footerArea {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.roundBack {
+    width: 55px;
+    height: 55px;
+    background: #d4ac0d;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2b0202;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+    .lucky7Container {
+        padding: 0.5rem;
+        height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .topBar {
+        padding: 0.5rem 1rem;
+    }
+
+    .statPill {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .mainLogoImg {
+        width: 75vw;
+        max-width: 320px;
+    }
+
+    .selectOptionTitle {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+
+    .bettingOptions {
+        gap: 0.5rem;
+        margin-top: 1rem;
+        width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .optionCard {
+        padding: 1.2rem 0.4rem 0.8rem;
+    }
+
+    .multiplierTag {
+        font-size: 0.9rem;
+        padding: 0.1rem 0.6rem;
+        top: -10px;
+    }
+
+    .rangeText {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .indicator {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 1rem;
+    }
+
+    .winLabel {
+        font-size: 0.8rem;
+    }
+
+    .amountBox {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .betControl {
+        margin-top: 1.5rem;
+    }
+
+    .controlRow {
+        gap: 1.5rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .rollBtnWrapper {
+        margin-top: 2rem;
+    }
+
+    .rollBtnImage {
+        width: 60vw;
+        max-width: 240px;
+    }
+
+    .limitBadge {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .historyGrid {
+        margin-top: 1.5rem;
+        gap: 0.4rem;
+    }
+
+    .slot {
+        width: 35px;
+        height: 35px;
+    }
+
+    .footerArea {
+        bottom: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .roundBack {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Rules Modal */
+.rulesOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.rulesModal {
+    background: linear-gradient(135deg, #2b0202 0%, #4a0404 100%);
+    width: 450px;
+    max-width: 90%;
+    padding: 2.5rem;
+    border-radius: 30px;
+    border: 5px solid #d4ac0d;
+    position: relative;
+    box-shadow: 0 0 50px rgba(212, 172, 13, 0.3);
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.rulesModal h2 {
+    color: #f1c40f;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.rulesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ruleItem {
+    margin-bottom: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #eee;
+}
+
+.ruleBullet {
+    color: #f1c40f;
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+
+.payoutTable {
+    margin: 1.5rem 0;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.payoutRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.payoutRow:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.payoutLabel { font-weight: 700; color: #fff; }
+.payoutVal { font-weight: 900; color: #2ecc71; }
+
+.closeRulesBtn {
+    width: 100%;
+    background: linear-gradient(to bottom, #f1c40f, #e67e22);
+    border: none;
+    padding: 1rem;
+    border-radius: 15px;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #2b0202;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #922b21;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.closeRulesBtn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}

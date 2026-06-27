@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;950&display=swap');
+
+.container {
+    min-height: 100vh;
+    background: #060818;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🌌 ATMOSPHERIC BACKGROUND */
+.techBackground {
+    position: fixed;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 50% 0%, rgba(30, 64, 175, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(88, 28, 135, 0.2) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.techBackground::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.contentWrapper {
+    width: min(100%, 800px);
+    z-index: 2;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 950;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* 📜 GLASS CARD SECTIONS */
+.sectionCard {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.sectionIcon {
+    font-size: 2rem;
+    color: #3b82f6;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 📝 LIST STYLES */
+.ruleList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ruleItem {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.ruleNumber {
+    background: #3b82f6;
+    color: white;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.ruleText strong {
+    color: #3b82f6;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.ruleText p {
+    color: #cbd5e1;
+    margin: 0;
+}
+
+/* 🔙 BACK BUTTON */
+.backButton {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+    font-weight: 600;
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-5px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .header { margin-top: 4rem; }
+    .title { font-size: 2rem; }
+    .sectionCard { padding: 1.5rem; }
+    .backButton { top: 1rem; left: 1rem; padding: 0.6rem 1rem; }
+}

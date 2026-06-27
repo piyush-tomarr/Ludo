@@ -1,0 +1,17 @@
+﻿.panel {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.panel span {
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.red { background: #e53935; }
+.blue { background: #1e88e5; }
+.green { background: #43a047; }
+.yellow { background: #fad416; color: #000; }

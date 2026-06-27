@@ -1,0 +1,93 @@
+﻿import { useState, useEffect, useRef } from 'react';
+import classes from './Chat.module.css';
+
+const normalizeColor = (color) => {
+    if (!color) return color;
+    const lower = color.trim().toLowerCase();
+    if (lower === "#fbc02d") return "#ffeb3b";
+    return lower;
+}
+
+const STICKERS = [
+    "😂", "â¤ï¸", "🔥", "😭", "😲", "🤔", "ðŸ‘", "🎮", "🎲", "ðŸ†", "😡", "😎",
+    "💀", "🚀", "🎉", "ðŸ¤", "👀", "🎯", "💥", "😜", "ðŸ›¡ï¸", "ðŸ€", "👑", "ðŸ•"
+];
+
+const Chat = ({ isOpen, onClose, messages, onSendSticker, localPlayerName, localPlayerColor, isWorldwide }) => {
+    const messagesEndRef = useRef(null);
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        if (isOpen) {
+            scrollToBottom();
+        }
+    }, [messages, isOpen]);
+
+    if (!isOpen) return null;
+
+    return (
+        <div className={classes.overlay} onClick={onClose}>
+            <div className={classes.modal} onClick={e => e.stopPropagation()}>
+                <div className={classes.header}>
+                    <div className={classes.titleGroup}>
+                        <h3>Ludo Chat</h3>
+                        <p>Express yourself with emojis</p>
+                    </div>
+                    <button className={classes.closeBtn} onClick={onClose}>Ã—</button>
+                </div>
+
+                <div className={classes.messagesList}>
+                    {messages.length === 0 ? (
+                        <div className={classes.noMessages}>No messages yet. Send an emoji!</div>
+                    ) : (
+                        messages.map((msg, idx) => {
+                            const isMe =
+                                (msg.player?.toLowerCase() === localPlayerName?.toLowerCase()) &&
+                                (normalizeColor(msg.color) === normalizeColor(localPlayerColor));
+                            return (
+                                <div
+                                    key={idx}
+                                    className={`${classes.messageItem} ${isMe ? classes.myMessage : classes.otherMessage}`}
+                                >
+                                    {!isMe && <span className={classes.senderName} style={{ color: msg.color }}>{msg.player}</span>}
+                                    <div 
+                                        className={`${classes.bubble} ${msg.type === 'sticker' ? classes.stickerBubble : ''}`} 
+                                        style={isMe ? { backgroundColor: msg.color } : {}}
+                                    >
+                                        {msg.text}
+                                    </div>
+                                    <span className={classes.time}>
+                                        {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                    </span>
+                                </div>
+                            );
+                        })
+                    )}
+                    <div ref={messagesEndRef} />
+                </div>
+
+                <div className={classes.footer}>
+                    <div className={classes.contentArea}>
+                        <div className={classes.stickersGrid}>
+                            {STICKERS.map((s, i) => (
+                                <button 
+                                    key={i} 
+                                    onClick={() => {
+                                        onSendSticker(s);
+                                    }} 
+                                    className={classes.stickerBtn}
+                                >
+                                    {s}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Chat;

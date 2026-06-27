@@ -1,0 +1,1966 @@
+.menuContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #2d0a5e 0%, #0d0129 100%);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Allow vertical scrolling by default */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+    .menuContainer {
+        height: 100vh;
+        overflow: hidden;
+        /* Keep desktop fixed height */
+    }
+}
+
+.menuContainer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* TOP NAVIGATION */
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    height: 65px;
+    min-height: 65px;
+    z-index: 100;
+    gap: 1rem;
+    background: rgba(13, 1, 41, 0.4);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(93, 23, 157, 0.3);
+    box-sizing: border-box;
+}
+
+.topLeftNav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(20, 2, 60, 0.95) 0%, rgba(10, 1, 30, 0.95) 100%);
+    border: 1.5px solid #5d179d;
+    border-radius: 40px 10px 10px 40px;
+    padding: 0.2rem 0.8rem 0.2rem 0.2rem;
+    gap: 0.6rem;
+    box-shadow: 0 0 15px rgba(93, 23, 157, 0.3);
+    cursor: pointer;
+}
+
+.playerAvatarWrapper {
+    position: relative;
+}
+
+.playerAvatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid #f1c40f;
+    overflow: hidden;
+    background: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.levelBadge {
+    position: absolute;
+    bottom: -4px;
+    left: -4px;
+    background: linear-gradient(to bottom, #ffd32a, #f39c12);
+    border: 1.5px solid #240b61;
+    border-radius: 8px;
+    padding: 0 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.levelStar {
+    font-size: 0.6rem;
+    color: #fff;
+}
+
+.levelNum {
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.playerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.playerName {
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.xpBarContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.xpBar {
+    width: 80px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.xpFill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffd32a 0%, #ff9f43 100%);
+}
+
+.xpText {
+    font-size: 0.55rem;
+    font-weight: 700;
+    opacity: 0.7;
+}
+
+.collectRewardsBtn {
+    background: linear-gradient(to right, #240b61, #0d0129);
+    border: 1.5px solid #5d179d;
+    border-radius: 8px;
+    padding: 0.3rem 0.6rem;
+    color: #ffd32a;
+    font-weight: 900;
+    font-size: 0.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.topCenterNav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.currencyPill {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1.5px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 0.2rem 0.3rem;
+    gap: 0.4rem;
+    min-width: 90px;
+}
+
+.currencyIconWrapper {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pillCoinIcon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 211, 42, 0.6));
+}
+
+.currencyValue {
+    flex: 1;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.plusBtn {
+    background: linear-gradient(to bottom, #2ecc71, #27ae60);
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.miniPlusBtn {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin-left: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s;
+}
+
+.miniPlusBtn:active {
+    transform: scale(0.9);
+}
+
+.topRightNav {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.vipBtn {
+    background: linear-gradient(135deg, #130f40 0%, #000000 100%);
+    border: 1.5px solid #f1c40f;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    color: #f1c40f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.vipIconWrapper {
+    font-size: 1.1rem;
+}
+
+.vipBtn span {
+    font-size: 0.5rem;
+    font-weight: 900;
+}
+
+.topActionIconBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+}
+
+.actionIconBox {
+    width: 34px;
+    height: 34px;
+    background: rgba(13, 1, 41, 0.95);
+    border: 1.5px solid #5d179d;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.topActionIconBtn span:not(.actionIcon) {
+    font-size: 0.5rem;
+    font-weight: 900;
+    opacity: 0.8;
+}
+
+/* MAIN LAYOUT */
+.mainLayout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 90px 1fr 340px;
+    grid-template-rows: 1fr;
+    padding: 1rem 2rem;
+    overflow: hidden;
+    z-index: 10;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+
+
+/* SIDEBARS (Mobile Icons) */
+.leftSidebar,
+.rightSidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+    z-index: 20;
+    height: 100%;
+
+}
+
+.sidebarIconGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebarIconBtn,
+.sidebarMusicToggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.sidebarIconBtn .iconTxt,
+.sidebarMusicToggle .iconTxt {
+    width: 46px;
+    height: 46px;
+    background: rgba(13, 1, 41, 0.8);
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+}
+
+.sidebarIconBtn:hover .iconTxt {
+    border-color: #f1c40f;
+    transform: scale(1.1);
+}
+
+.sidebarLabel {
+    font-size: 0.55rem;
+    font-weight: 900;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    width: 60px;
+}
+
+.dotBadge {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    background: #ff4757;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #050015;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+/* MUSIC TOGGLE IN SIDEBAR */
+.miniToggle {
+    width: 32px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    position: relative;
+    margin-top: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.miniToggleCircle {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    transition: all 0.2s;
+}
+
+.miniToggleActive {
+    background: #2ecc71;
+}
+
+.miniToggleActive .miniToggleCircle {
+    left: 17px;
+}
+
+/* CENTER CONTENT */
+.centerContent {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+}
+
+/* Hide mobile-only elements inside wide buttons on desktop */
+.wideActionBtn .sidebarLabel,
+.wideActionBtn .miniToggle {
+    display: none;
+}
+
+/* RIGHT SIDEBAR - WIDE BUTTONS */
+.rightActionButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    width: 100%;
+}
+
+.wideActionBtn {
+    background: rgba(13, 1, 41, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: left;
+}
+
+.wideActionBtn:hover {
+    transform: translateX(-5px);
+    border-color: #ffd32a;
+}
+
+.wideBtnIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rankBoxes {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.rankBox {
+    width: 8px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    font-weight: 950;
+}
+
+.wideBtnContent {
+    flex: 1;
+}
+
+.wideBtnContent h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 950;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.wideBtnContent p {
+    margin: 0.1rem 0 0 0;
+    font-size: 0.65rem;
+    opacity: 0.7;
+    font-weight: 600;
+    color: white;
+}
+
+.wideBtnChevron {
+    font-size: 1.2rem;
+    opacity: 0.5;
+}
+
+.btnLeaderboard {
+    background: linear-gradient(135deg, #6c5ce7 0%, #341f97 100%);
+    border-left: 5px solid #ffd32a;
+}
+
+.btnProfile {
+    background: linear-gradient(135deg, #0984e3 0%, #0652dd 100%);
+    border-left: 5px solid #fff;
+}
+
+.btnMusic {
+    background: #2ecc71;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 8px 0 #27ae60, 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-left: none;
+    /* Removed the previous border-left */
+}
+
+.btnMusic:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+}
+
+.btnMusic:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #27ae60;
+}
+
+
+.btnBot {
+    background: linear-gradient(135deg, #0d0129 0%, #240b61 100%);
+    border-left: 5px solid #3498db;
+}
+
+.btnRedeem {
+    background: linear-gradient(135deg, #1b004a 0%, #30007d 100%);
+    border-left: 5px solid #e67e22;
+}
+
+.profileIconBox,
+.musicIconBox {
+    font-size: 1.6rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.statusToggle {
+    background: #27ae60;
+    border-radius: 50px;
+    padding: 0.4rem 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 90px;
+    height: 38px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.toggleText {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #fff;
+    margin-left: 5px;
+    transition: all 0.3s;
+}
+
+.toggleThumb {
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.toggleActive {
+    background: #1e8449;
+    /* Darker green when active */
+}
+
+.toggleActive .toggleThumb {
+    right: 5px;
+    /* Stay on right when active? Wait, the image shows ON on the right */
+}
+
+/* If Muted (OFF), move thumb to left */
+.statusToggle:not(.toggleActive) {
+    background: #95a5a6;
+}
+
+.statusToggle:not(.toggleActive) .toggleThumb {
+    right: calc(100% - 33px);
+}
+
+.statusToggle:not(.toggleActive) .toggleText {
+    margin-left: 35px;
+}
+
+
+.miniToggle {
+    display: none;
+    /* Hidden on desktop */
+}
+
+.logoArea {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.mainLogo {
+    width: auto;
+    height: 240px;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8));
+    z-index: 10;
+    position: relative;
+}
+
+.logoPlatform {
+    position: absolute;
+    bottom: -20px;
+    left: 20%;
+    width: 45%;
+    height: 70px;
+    background: radial-gradient(ellipse at center, rgba(162, 155, 254, 0.5) 0%, transparent 80%);
+    border-radius: 50%;
+    filter: blur(15px);
+    z-index: 1;
+}
+
+.desktopSideColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: end;
+    z-index: 20;
+}
+
+.desktopRewardCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(135deg, rgba(93, 23, 157, 0.4) 0%, rgba(20, 2, 60, 0.6) 100%);
+    border: 1.5px solid rgba(255, 211, 42, 0.4);
+    border-radius: 15px;
+    padding: 0.8rem 1.5rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    min-width: 380px;
+}
+
+.rewardBadgeIcon {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 0 10px rgba(255, 211, 42, 0.3));
+}
+
+.rewardBadgeText h5 {
+    color: #ffd32a;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.rewardBadgeText p {
+    color: #fff;
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.miniClaimBtn {
+    margin-left: auto;
+    background: linear-gradient(to bottom, #ffea00, #ff9f00);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    color: #1b004a;
+    font-weight: 900;
+    font-size: 0.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #9e6d01, 0 5px 15px rgba(255, 159, 0, 0.3);
+    transition: transform 0.1s;
+}
+
+.miniClaimBtn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #9e6d01;
+}
+
+.wheelContainer {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    filter: drop-shadow(0 0 40px rgba(255, 159, 0, 0.4));
+}
+
+.rewardSpinWheel {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: spinSlow 20s linear infinite;
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* DESKTOP REWARD CARD (Near Logo) */
+.desktopRewardCard {
+    display: none;
+
+    /* Hidden on mobile */
+}
+
+@media (min-width: 769px) {
+    .desktopRewardCard {
+        display: flex;
+        min-width: 240px;
+        background: linear-gradient(135deg, rgba(93, 23, 157, 0.4) 0%, rgba(20, 2, 60, 0.4) 100%);
+        border: 1px solid rgba(255, 211, 42, 0.3);
+        border-radius: 16px;
+        padding: 1rem;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+
+}
+
+.desktopRewardContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rewardBadgeIcon {
+    font-size: 2rem;
+    color: #ffd32a;
+    filter: drop-shadow(0 0 8px rgba(255, 211, 42, 0.4));
+}
+
+.rewardBadgeText {
+    flex: 1;
+}
+
+.rewardBadgeText h5 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 950;
+    color: #ffd32a;
+    letter-spacing: 1px;
+}
+
+.rewardBadgeText p {
+    margin: 0.1rem 0 0.5rem 0;
+    font-size: 0.7rem;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.miniClaimBtn {
+    background: linear-gradient(to bottom, #ffd32a, #f39c12);
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 1rem;
+    color: #1b004a;
+    font-weight: 950;
+    font-size: 0.75rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #9e6d01;
+    transition: all 0.2s;
+}
+
+.miniClaimBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #9e6d01;
+}
+
+.miniClaimBtn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #9e6d01;
+}
+
+.logoGlow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.3) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.mobileOnlyIcon {
+    display: none;
+}
+
+.modesGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    /* padding: 0.75rem; */
+}
+
+.modeCard {
+    border-radius: 20px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modeCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.modeCard:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+.modeCard * {
+    position: relative;
+    z-index: 2;
+}
+
+.modeIconBox {
+    width: 110px;
+    height: 110px;
+    /* margin-bottom: 0.8rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modeIconBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modeCard:hover .modeIconBox {
+    transform: scale(1.18) translateY(-8px);
+    filter: drop-shadow(0 12px 30px rgba(255, 255, 255, 0.25));
+}
+
+.modeCard h3 {
+    font-size: 1.1rem;
+    font-weight: 950;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.modeCard p {
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0.9;
+    margin: 0.3rem 0 0 0;
+}
+
+.modeGreen {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.modeBlue {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.modeOrange {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.modeRed {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* REWARD SECTION CARD */
+.rewardSectionCard {
+    width: 100%;
+    background: linear-gradient(135deg, #1b004a 0%, #30007d 100%);
+    border: 2px solid #5d179d;
+    border-radius: 15px;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.rewardCardInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.rewardChestIcon {
+    font-size: 3rem;
+    filter: drop-shadow(0 5px 15px rgba(241, 196, 15, 0.4));
+}
+
+.rewardTextWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rewardTextWrapper h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.claimBtn {
+    background: linear-gradient(to bottom, #ffd32a, #f39c12);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    color: #1b004a;
+    font-weight: 950;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 0 #9e6d01;
+    transition: transform 0.1s;
+}
+
+.claimBtn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #9e6d01;
+}
+
+/* BOTTOM APP BAR / FOOTER */
+.bottomStatusBar {
+    background: rgba(13, 1, 41, 0.98);
+    border-top: 2px solid #5d179d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 2rem;
+    height: auto;
+    min-height: 55px;
+    margin-top: auto;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    box-sizing: border-box;
+}
+
+.statusItem {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+}
+
+.statusItem:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.statusIconWrapper {
+    font-size: 1.6rem;
+    color: #ffd32a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 5px rgba(255, 211, 42, 0.3));
+}
+
+.statusText {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.statusTitle {
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+.statusSub {
+    font-size: 0.65rem;
+    opacity: 0.65;
+    font-weight: 600;
+}
+
+/* RESPONSIVE MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .mainLayout {
+        display: grid;
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows: auto auto auto;
+        padding: 1rem;
+        gap: 0.5rem;
+        height: auto;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .leftSidebar,
+    .rightSidebar {
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0;
+        background: none;
+        backdrop-filter: none;
+    }
+
+    .leftSidebar {
+        grid-column: 1;
+        /* gap: 1rem; */
+    }
+
+    .rightSidebar {
+        grid-column: 3;
+    }
+
+    .sidebarIconGroup,
+    .rightActionButtons {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 1.2rem;
+        align-items: center;
+    }
+
+    .centerContent {
+        display: contents;
+        /* Allows children to be direct grid items */
+    }
+
+    .logoArea {
+        grid-row: 1;
+        grid-column: 2;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .mainLogo {
+        height: 100px;
+        width: auto;
+        display: block;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    .sidebarIconGroup {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .sidebarIconBtn {
+        width: auto;
+        min-width: 60px;
+    }
+
+    .modesGrid {
+        grid-row: 2;
+        grid-column: 1 / span 3;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 1rem;
+        gap: 0.6rem;
+    }
+
+    .modesGrid .modeCard:last-child {
+        grid-column: span 2;
+    }
+
+    .rewardSectionCard {
+        grid-row: 3;
+        grid-column: 1 / span 3;
+        margin-top: 1rem;
+    }
+
+    /* Transform Wide Buttons into Square Icons on Mobile */
+    .rightActionButtons {
+        gap: 1.2rem;
+    }
+
+    .wideActionBtn {
+        flex-direction: column;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        gap: 0;
+        background: rgba(13, 1, 41, 0.85);
+        border: 2px solid #3498db;
+        border-radius: 10px;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        overflow: visible;
+        position: relative;
+    }
+
+    .wideBtnContent,
+    .wideBtnChevron,
+    .statusToggle,
+    .rankBoxes,
+    .profileIconBox,
+    .musicIconBox {
+        display: none !important;
+    }
+
+    .mobileOnlyIcon {
+        display: flex !important;
+        font-size: 1.4rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+
+    .sidebarLabel {
+        display: block !important;
+        position: absolute;
+        bottom: -16px;
+        font-size: 0.5rem;
+        width: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        text-shadow: 0 1px 2px #000;
+        opacity: 0.9;
+    }
+
+    .miniToggle {
+        display: block !important;
+        position: absolute;
+        bottom: -32px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+    }
+
+    .bottomStatusBar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0.5rem;
+        gap: 0.4rem;
+        height: auto;
+    }
+
+    .statusItem {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .statusText {
+        text-align: center;
+    }
+
+    .statusTitle {
+        font-size: 0.45rem;
+    }
+
+    .statusSub {
+        font-size: 0.35rem;
+    }
+
+    .statusIconWrapper {
+        font-size: 1.1rem;
+    }
+
+    .desktopSideColumn {
+        display: none;
+    }
+
+    .topNav {
+        padding: 0.5rem;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .topLeftNav,
+    .topCenterNav,
+    .topRightNav {
+        width: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .playerCard {
+        padding: 0.2rem 0.5rem;
+        min-width: 140px;
+        justify-content: center;
+    }
+
+    .currencyPill {
+        padding: 0.2rem 0.5rem;
+        gap: 0.3rem;
+        font-size: 0.75rem;
+        min-width: 100px;
+        flex: 0 1 auto;
+    }
+
+    .topActionIconBtn span,
+    .vipBtn span,
+    .vipBtn {
+        display: none;
+        /* Hide labels and VIP button on mobile to save space */
+    }
+
+    .topRightNav {
+        width: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .topActionIconBtn {
+        flex-direction: row;
+    }
+
+    .actionIconBox {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        background: rgba(93, 23, 157, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* RESPONSIVE DESKTOP FALLBACK */
+@media (min-width: 769px) {
+    .mainLayout {
+        grid-template-columns: 100px 1fr 340px;
+        /* padding: 2rem; */
+    }
+
+    .logoArea {
+        max-width: 650px;
+        flex-direction: row;
+        gap: 3rem;
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .modesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .rewardSectionCard {
+        display: none;
+    }
+
+    .sidebarIconBtn .iconTxt,
+    .sidebarMusicToggle .iconTxt {
+        width: 56px;
+        height: 56px;
+        font-size: 1.8rem;
+    }
+
+    .sidebarLabel {
+        font-size: 0.7rem;
+        width: 80px;
+    }
+}
+
+.statusDivider {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+@media (max-width: 768px) {
+    .statusDivider {
+        display: none;
+    }
+}
+
+/* COMING SOON MODAL */
+.comingSoonOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.comingSoonModal {
+    position: relative;
+    background: radial-gradient(circle at center, #003366 0%, #001a33 100%);
+    width: 380px;
+    max-width: 90%;
+    padding: 2.5rem 1.5rem 2rem;
+    border-radius: 24px;
+    border: 3px solid #f1c40f;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comingSoonHeader {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.comingSoonRibbon {
+    background: linear-gradient(to bottom, #ff4757, #c0392b);
+    color: #fff;
+    padding: 0.6rem 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 3px solid #fff;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.comingSoonClose {
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background: #ff4757;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+    pointer-events: auto;
+    transition: transform 0.2s;
+}
+
+.comingSoonClose:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+.comingSoonBody {
+    margin: 2rem 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comingSoonMascot {
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    z-index: 5;
+    animation: float 3s infinite ease-in-out;
+}
+
+.comingSoonGlow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.4) 0%, transparent 70%);
+    z-index: 1;
+}
+
+.comingSoonFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.comingSoonBtn {
+    background: linear-gradient(to bottom, #2ecc71, #27ae60);
+    border: 3px solid #fff;
+    padding: 0.8rem 4rem;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #1e8449, 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s;
+}
+
+.comingSoonBtn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #1e8449;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalPop {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* STATISTICS MODAL STYLES */
+.statsModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    backdrop-filter: blur(10px);
+}
+
+.statsModalContent {
+    position: relative;
+    width: 380px;
+    max-width: 95%;
+    max-height: 90vh;
+    background: #004b93;
+    border: 3.5px solid #ff007f;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 50px rgba(255, 0, 127, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+}
+
+.statsRibbonContainer {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.statsRibbon {
+    background: #ff0000;
+    color: #fff;
+    padding: 0.6rem 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 8px 0 #b30000, 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 3px solid #fff;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.statsRibbon::before,
+.statsRibbon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 30px;
+    background: #b30000;
+    z-index: -1;
+}
+
+.statsRibbon::before {
+    left: -30px;
+    transform: translateY(-50%) skewY(10deg);
+    border-radius: 4px 0 0 4px;
+}
+
+.statsRibbon::after {
+    right: -30px;
+    transform: translateY(-50%) skewY(-10deg);
+    border-radius: 0 4px 4px 0;
+}
+
+.statsModalBody {
+    padding: 2.5rem 1rem 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    scrollbar-width: thin;
+}
+
+.statsSubHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 12px;
+}
+
+.flagBox {
+    font-size: 1.1rem;
+}
+
+.userIdText {
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.copyBtn {
+    background: #ffcc00;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 5px;
+    color: #1b004a;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.profileStatsCard {
+    background: #ff007f;
+    background-image: radial-gradient(circle at 10px 10px, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+}
+
+.statsAvatarBox {
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2.5px solid #fff;
+    background: #2c3e50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.statsAvatarBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.statsMainInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.statsNameRow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.genderIcon {
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.statsNameText {
+    font-size: 1rem;
+    font-weight: 900;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.statsCurrencyRow {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.statsCurrencyItem {
+    background: #3c096c;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusInputBox {
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.3rem 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.statusInputBox input {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    color: #333;
+    width: 100%;
+    outline: none;
+}
+
+.statusEditIcon {
+    color: #3498db;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.statsLevelSection {
+    margin-top: 0.2rem;
+}
+
+.levelTitle {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #ffd32a;
+    text-align: right;
+    margin-bottom: 2px;
+}
+
+.levelProgressContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.levelProgressStar {
+    color: #ffd32a;
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 5px rgba(255, 211, 42, 0.5));
+}
+
+.levelProgressBar {
+    flex: 1;
+    height: 14px;
+    background: #012b5d;
+    border-radius: 10px;
+    border: 1.5px solid #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.levelProgressFill {
+    height: 100%;
+    background: linear-gradient(to right, #ffd32a, #f39c12);
+}
+
+.levelProgressText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 1px 2px #000;
+}
+
+.statsListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.statsListItem {
+    background: linear-gradient(to bottom, #004b93, #003a7a);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.statItemLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.statItemRight {
+    font-size: 0.9rem;
+    font-weight: 900;
+    color: #3498db;
+}
+
+.statsActionButtons {
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    gap: 0.5rem;
+        /* width: 100%; */
+}
+
+.statsActionBtn {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    border: 1.5px solid #fff;
+    border-radius: 8px;
+    padding: 0.4rem 0.2rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.6rem;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #1b6391;
+    width: 100%;
+    font-size: 15px;
+}
+
+.statsModalFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.editProfileBtn {
+    background: linear-gradient(to bottom, #fff, #ddd);
+    border: 2px solid #012b5d;
+    border-radius: 50px;
+    padding: 0.4rem 2rem;
+    font-weight: 950;
+    font-size: 1rem;
+    color: #012b5d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #aaa;
+}
+
+.statsBackBtn {
+    position: absolute;
+    left: 0;
+    background: #ffcc00;
+    border: 3px solid #012b5d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #012b5d;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #b8860b;
+    transition: transform 0.2s;
+    margin-left: 20px;
+}
+
+.statsBackBtn:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER MASCOT EMOJI */
+.footerMascotWrapper {
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+    width: 80px;
+    height: auto;
+    z-index: 150;
+    pointer-events: none;
+    animation: floatMascot 4s infinite ease-in-out;
+}
+
+.footerEmoji {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+}
+
+@keyframes floatMascot {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(2deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(-2deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .footerMascotWrapper {
+        display: none;
+        /* Hide on small screens to avoid clutter */
+    }
+}
+
+/* SIDEBAR MASCOT */
+.sidebarMascot {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: floatSidebar 3s infinite ease-in-out;
+}
+
+.sidebarEmoji {
+    width: 65px;
+    height: auto;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes floatSidebar {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+.statsCoinIcon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statsCoinIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 211, 42, 0.4));
+}

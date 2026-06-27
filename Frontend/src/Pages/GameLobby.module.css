@@ -1,0 +1,635 @@
+﻿.container {
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: block;
+    overflow-x: hidden;
+    padding: 100px 20px 40px;
+}
+
+.background {
+    position: fixed;
+    /* Stick to viewport while content scrolls */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    animation: float 15s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -150px;
+}
+
+.circle:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(30px, -30px);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: min(94vw, 600px);
+    margin: 0 auto;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lobbyCard {
+    background: white;
+    border-radius: 20px;
+    padding: clamp(20px, 8vw, 40px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.statusDot {
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+.title {
+    font-size: clamp(1.8rem, 8vw, 2.25rem);
+    font-weight: 900;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.errorBox {
+    background: #fee;
+    border: 2px solid #fcc;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #c33;
+    font-size: 14px;
+    text-align: left;
+}
+
+.errorBox svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.gameIdSection {
+    background: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.gameIdLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.gameIdBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gameId {
+    flex: 1;
+    font-size: 24px;
+    font-weight: 900;
+    color: #667eea;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.copyButton {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.copyButton svg {
+    width: 16px;
+    height: 16px;
+}
+
+.copyButton:hover {
+    background: #5568d3;
+    transform: scale(1.05);
+}
+
+.shareHint {
+    margin: 10px 0 0 0;
+    font-size: 13px;
+    color: #999;
+    font-style: italic;
+}
+
+.playersSection {
+    margin-bottom: 25px;
+}
+
+.playersSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.playersSectionHeader h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.playersList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.playerCard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.playerAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.playerInfo {
+    flex: 1;
+    flex: 0 0 auto;
+}
+
+.playerName {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.hostBadge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.playerStatus {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.readyDot {
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4caf50;
+}
+
+.emptySlot {
+    background: #f5f5f5;
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.6;
+}
+
+.emptyAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ccc;
+    background: #e0e0e0;
+}
+
+.emptyText {
+    flex: 1;
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+}
+
+.instructions {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+.instructions svg {
+    width: 24px;
+    height: 24px;
+    color: #2196f3;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.instructionTitle {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1976d2;
+}
+
+.instructionText {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.startButton {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.startButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.startButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.startButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #ccc;
+}
+
+.waitingMessage {
+    width: 90%;
+    padding: 16px;
+    background: #fff3e0;
+    border: 2px solid #ffb74d;
+    border-radius: 12px;
+    color: #e65100;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.waitingSpinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(230, 81, 0, 0.3);
+    border-top-color: #e65100;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.leaveButton {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: auto;
+    padding: 12px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.leaveButton:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-5px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+        height: 100dvh;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .lobbyCard {
+        padding: 24px 16px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .statusBadge {
+        padding: 4px 12px;
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .gameIdSection {
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .gameIdLabel {
+        font-size: 10px;
+    }
+
+    .gameIdBox {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .gameId {
+        font-size: 18px;
+        text-align: center;
+        width: 100%;
+        margin: 4px 0;
+    }
+
+    .copyButton {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        height: 48px;
+        /* Better touch target */
+    }
+
+    .playersSectionHeader h3 {
+        font-size: 15px;
+    }
+
+    .playerCard {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .playerAvatar {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+        border-width: 2px;
+    }
+
+    .playerName {
+        font-size: 14px;
+    }
+
+    .hostBadge {
+        font-size: 9px;
+        padding: 1px 5px;
+    }
+
+    .playerStatus {
+        font-size: 12px;
+    }
+
+    .emptySlot {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .emptyAvatar {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .emptyText {
+        font-size: 13px;
+    }
+
+    .instructions {
+        padding: 12px;
+        margin-bottom: 20px;
+        gap: 8px;
+    }
+
+    .instructions svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .instructionTitle {
+        font-size: 13px;
+    }
+
+    .instructionText {
+        font-size: 12px;
+    }
+
+    .startButton {
+        padding: 14px;
+        font-size: 16px;
+        height: 54px;
+        /* Better touch target */
+    }
+
+    .leaveButton {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-top: 10px;
+        background: rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.3);
+        padding: 14px;
+        font-size: 16px;
+        height: 52px;
+        z-index: 1;
+    }
+
+    .waitingMessage {
+        width: 100%;
+        /* Fix width */
+        padding: 14px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-height: 600px) {
+    .container {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+}

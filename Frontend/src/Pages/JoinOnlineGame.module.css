@@ -1,0 +1,230 @@
+﻿.container {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    background: linear-gradient(135deg, #FF5F6D 0%, #FFC371 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    animation: float 15s infinite ease-in-out;
+}
+
+.circle:nth-child(1) { width: 400px; height: 400px; top: -150px; right: -150px; }
+.circle:nth-child(2) { width: 300px; height: 300px; bottom: -100px; left: -100px; animation-delay: 5s; }
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.backButton {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.backButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.backButton svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.backButton:hover svg {
+    transform: translateX(-3px);
+}
+
+@media (max-width: 600px) {
+    .backButton {
+        top: max(15px, env(safe-area-inset-top));
+        left: max(15px, env(safe-area-inset-left));
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .backButton span {
+        display: none;
+    }
+
+    .backButton svg {
+        width: 22px;
+        height: 22px;
+        margin: 0;
+    }
+}
+
+.walletBadge {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 30px;
+    width: fit-content;
+}
+
+.walletValue { font-size: 1.1rem; font-weight: 800; color: #ffd700; }
+.walletIcon { font-size: 1.2rem; }
+
+.header { text-align: center; margin-bottom: 40px; }
+.title { font-size: 3rem; font-weight: 900; color: white; margin: 0; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-top: 5px; }
+.feeTxt { color: #ffd700; font-weight: 900; }
+
+.errorBox {
+    background: rgba(255,0,0,0.25);
+    border-left: 5px solid #ff4d4d;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.formBody {
+    background: white;
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.2);
+}
+
+.inputGroup {
+    margin-bottom: 25px;
+}
+
+.inputLabel {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.mainInput {
+    width: 100%;
+    padding: 18px 20px;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.mainInput:focus { border-color: #FF5F6D; background: white; box-shadow: 0 0 0 4px rgba(255, 95, 109, 0.1); }
+
+.roomInputWrapper {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.pasteIconBtn {
+    background: #FF5F6D;
+    border: none;
+    border-radius: 12px;
+    padding: 0 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.pasteIconBtn:active { transform: scale(0.9); }
+
+.joinButton {
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #FF5F6D 0%, #FFC371 100%);
+    border: none;
+    border-radius: 18px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 95, 109, 0.3);
+    transition: 0.3s;
+}
+
+.joinButton:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 95, 109, 0.4); }
+.joinButton:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.helpNote {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: rgba(255,255,255,0.15);
+    padding: 15px 20px;
+    border-radius: 18px;
+    color: white;
+}
+
+.noteIcon { font-size: 1.4rem; }
+.noteText { font-size: 0.9rem; line-height: 1.4; opacity: 0.95; }
+
+@media (max-width: 480px) {
+    .title { font-size: 2.2rem; }
+}
